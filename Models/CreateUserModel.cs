@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using example_dotnet_identity.Auth;
 
 namespace example_dotnet_identity.Models;
 public class CreateUserModel
