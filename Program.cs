@@ -8,6 +8,14 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
+    });
+
 //AddDbContext
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
@@ -84,6 +92,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("CorsPolicy");
 //Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();

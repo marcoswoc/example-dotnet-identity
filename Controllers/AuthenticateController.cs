@@ -81,7 +81,7 @@ public class AuthenticateController : ControllerBase
             foreach (var userRole in userRoles)
                 authClaims.Add(new(ClaimTypes.Role, userRole));
 
-            return Ok(new ResponseModel { Data = GetToken(authClaims) });
+            return Ok(new ResponseModel<TokenModel> { Data = GetToken(authClaims) });
         }
 
         return Unauthorized();
